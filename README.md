@@ -31,8 +31,8 @@ Both USB HID and BLE HID are **enabled by default**.
 - 🔄 Stable under testing
 
 ### 🔌 USB HID
-- ❌ Not functional yet
-- 🔧 Under active debugging
+- ✅ Working
+- 🔧 Under testing
 
 ### 🔀 Dual Mode
 - 🔄 USB + BLE simultaneous mode implemented
