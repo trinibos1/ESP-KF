@@ -1,5 +1,7 @@
 # EFK- Esp32 Keybaord firmware
 
+**Note:** This project originally started as ESPKM (ESP32 Keyboard something). The source code still retains the `espkm_*` prefixes, but the public name has been changed to **ESP‑KF** (ESP32 Keyboard Firmware) to better reflect its purpose.
+
 This repository is a **work-in-progress** ESP-IDF firmware framework targeting **ESP32-S3**(more support coming soon) keyboards, inspired by QMK:
 
 - Strict event pipeline (matrix → events → features → report → queued transports)
@@ -36,7 +38,7 @@ Both USB HID and BLE HID are **enabled by default**.
 - 🔄 USB + BLE simultaneous mode implemented
 - ⏳ Waiting for USB HID to become functional
 - ⚙️ Currently under testing and tuning
-  
+   
 ## Current state
 - Architecture + queues + tasks implemented
 - USB HID keyboard sender implemented (using ESP-IDF TinyUSB/`esp_tinyusb`)- BLE HID keyboard sender implemented (using NimBLE)
