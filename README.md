@@ -1,4 +1,4 @@
-# EFK- Esp32 Keybaord firmware
+# EFK- Esp32 Keyboard firmware
 
 **Note:** This project originally started as ESPKM (ESP32 Keyboard something). The source code still retains the `espkm_*` prefixes, but the public name has been changed to **ESP‑KF** (ESP32 Keyboard Firmware) to better reflect its purpose.
 
