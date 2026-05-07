@@ -1,0 +1,32 @@
+menu "ESPKM USB"
+
+config ESPKM_USB_OTG_ENABLE
+    bool "Enable USB-OTG (TinyUSB) HID+CDC"
+    default n
+    help
+        Enable TinyUSB-based USB-OTG device (HID keyboard + CDC console).
+        On some ESP32-S3 boards the internal USB PHY is routed to USB Serial/JTAG by default,
+        so OTG may not enumerate unless the board supports it (or eFuses are changed).
+
+config ESPKM_USB_ENABLE
+    bool "Enable USB HID keyboard"
+    default y
+    depends on ESPKM_USB_OTG_ENABLE
+
+config ESPKM_USB_TASK_STACK
+    int "usb_task stack (bytes)"
+    default 4096
+    depends on ESPKM_USB_ENABLE
+
+config ESPKM_USB_TASK_PRIO
+    int "usb_task priority"
+    default 8
+    depends on ESPKM_USB_ENABLE
+
+config ESPKM_USB_POLL_MS
+    int "USB send poll interval (ms)"
+    default 1
+    range 1 10
+    depends on ESPKM_USB_ENABLE
+
+endmenu

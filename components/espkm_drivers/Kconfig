@@ -1,0 +1,30 @@
+menu "ESPKM Drivers"
+
+config ESPKM_DIRECT_MATRIX
+    bool "Enable direct-pin matrix driver"
+    default y
+
+config ESPKM_MATRIX_ROWS
+    int "Matrix rows"
+    default 2
+    range 1 8
+    depends on ESPKM_DIRECT_MATRIX
+
+config ESPKM_MATRIX_COLS
+    int "Matrix cols"
+    default 3
+    range 1 16
+    depends on ESPKM_DIRECT_MATRIX
+
+config ESPKM_DIRECT_ROW_PINS
+    string "Row GPIOs (comma-separated, e.g. 1,2)"
+    default "1,2"
+    depends on ESPKM_DIRECT_MATRIX
+
+config ESPKM_DIRECT_COL_PINS
+    string "Col GPIOs (comma-separated, e.g. 3,4,5)"
+    default "3,4,5"
+    depends on ESPKM_DIRECT_MATRIX
+
+endmenu
+

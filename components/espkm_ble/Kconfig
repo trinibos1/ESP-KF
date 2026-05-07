@@ -1,0 +1,17 @@
+menu "ESPKM BLE"
+
+config ESPKM_BLE_ENABLE
+    bool "Enable BLE (scaffold)"
+    default y
+
+config ESPKM_BLE_TASK_STACK
+    int "ble_task stack (bytes)"
+    default 4096
+    depends on ESPKM_BLE_ENABLE
+
+config ESPKM_BLE_TASK_PRIO
+    int "ble_task priority"
+    default 7
+    depends on ESPKM_BLE_ENABLE
+
+endmenu

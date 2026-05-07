@@ -1,0 +1,12 @@
+menu "ESPKM Router"
+
+config ESPKM_ROUTER_TASK_STACK
+    int "router_task stack (bytes)"
+    default 4096
+
+config ESPKM_ROUTER_TASK_PRIO
+    int "router_task priority"
+    default 9
+
+endmenu
+

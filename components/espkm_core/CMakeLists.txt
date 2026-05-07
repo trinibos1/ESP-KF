@@ -1,0 +1,19 @@
+idf_component_register(
+  SRCS
+    "kb_time.c"
+    "core.c"
+    "keycodes.c"
+    "layers.c"
+    "taphold.c"
+    "combos.c"
+    "report_builder.c"
+    "debug_ring.c"
+    "keyboard_default.c"
+    "stats.c"
+  INCLUDE_DIRS
+    "include"
+  REQUIRES
+    freertos
+    esp_timer
+    esp_system
+)

@@ -1,0 +1,12 @@
+idf_component_register(
+  SRCS
+    "matrix_direct.c"
+  INCLUDE_DIRS
+    "include"
+  REQUIRES
+    freertos
+    espkm_core
+  PRIV_REQUIRES
+    esp_driver_gpio
+    esp_rom
+)

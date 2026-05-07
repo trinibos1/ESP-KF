@@ -1,0 +1,11 @@
+menu "ESPKM CLI"
+
+config ESPKM_CLI_ENABLE
+    bool "Enable interactive CLI (espkm> prompt)"
+    default y
+    help
+        Enable the esp_console based REPL exposing the "stats", "transport",
+        "ring", "pins", and "ble" commands on the stdio console.
+        Disable to save flash/RAM or for production builds.
+
+endmenu

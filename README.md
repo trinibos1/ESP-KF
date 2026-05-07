@@ -1,0 +1,31 @@
+# espkm (ESP32-S3 QMK-like firmware)
+
+This repository is a **work-in-progress** ESP-IDF firmware framework targeting **ESP32-S3** keyboards, inspired by QMK:
+
+- Strict event pipeline (matrix → events → features → report → queued transports)
+- Encoded keycodes (`uint16_t`)
+- Dual-transport support: USB HID (TinyUSB) and BLE HID work simultaneously by default
+
+## Quick start
+
+1. Install ESP-IDF (v5.x recommended).
+2. Configure (optional):
+   - `idf.py menuconfig` for custom matrix pins or advanced settings
+3. Build/flash:
+   - `idf.py build flash monitor`
+
+Both USB HID and BLE HID are **enabled by default**. No eFuse changes needed.
+
+## Docs
+
+- `docs/GETTING_STARTED.md`
+- `docs/ARCHITECTURE.md`
+- `docs/DEBUGGING.md`
+
+## Current state
+
+- Architecture + queues + tasks implemented
+- USB HID keyboard sender implemented (using ESP-IDF TinyUSB/`esp_tinyusb`)- BLE HID keyboard sender implemented (using NimBLE)
+- Dual-transport (USB + BLE) mode: both active simultaneously when available- Reference keyboard component: `keyboards/demo_macropad`
+- Tap/Hold: implemented for `KC_MT()` / `KC_LT()` (P1 default; P2 permissive options wired)
+- Combos: implemented for 2-key combos with the “undecided priority” rule (currently best suited for tap/hold-style combo members)

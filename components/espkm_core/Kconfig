@@ -1,0 +1,99 @@
+menu "ESPKM"
+
+config ESPKM_EVENT_QUEUE_LEN
+    int "eventQueue length"
+    default 64
+    range 8 256
+    help
+        Queue length for debounced KeyEvent items.
+
+config ESPKM_REPORT_QUEUE_LEN
+    int "reportQueue length (use 1 for overwrite)"
+    default 1
+    range 1 16
+    help
+        Report queue length. Use 1 to enable overwrite/mailbox semantics.
+
+config ESPKM_CORE_TASK_STACK
+    int "core_task stack (bytes)"
+    default 8192
+
+config ESPKM_CORE_TASK_PRIO
+    int "core_task priority"
+    default 10
+
+config ESPKM_MATRIX_TASK_STACK
+    int "matrix_task stack (bytes)"
+    default 4096
+
+config ESPKM_MATRIX_TASK_PRIO
+    int "matrix_task priority"
+    default 11
+
+config ESPKM_MATRIX_SCAN_PERIOD_MS
+    int "Matrix scan period (ms, max 1kHz)"
+    default 1
+    range 1 10
+
+choice ESPKM_TAPHOLD_POLICY
+    prompt "Tap/Hold policy"
+    default ESPKM_TAPHOLD_P1_INTERRUPT_HOLD
+
+config ESPKM_TAPHOLD_P1_INTERRUPT_HOLD
+    bool "P1 Interrupt = HOLD (default)"
+
+config ESPKM_TAPHOLD_P2_PERMISSIVE
+    bool "P2 QMK-like permissive"
+endchoice
+
+config ESPKM_P2_PERMISSIVE_HOLD
+    bool "P2: permissive_hold"
+    default y
+    depends on ESPKM_TAPHOLD_P2_PERMISSIVE
+
+config ESPKM_P2_IGNORE_MOD_TAP_INTERRUPT
+    bool "P2: ignore_mod_tap_interrupt"
+    default n
+    depends on ESPKM_TAPHOLD_P2_PERMISSIVE
+
+config ESPKM_P2_RETRO_TAP
+    bool "P2: retro_tap"
+    default n
+    depends on ESPKM_TAPHOLD_P2_PERMISSIVE
+
+config ESPKM_TAPPING_TERM_MS
+    int "Default tapping term (ms)"
+    default 200
+    range 50 500
+
+config ESPKM_COMBO_TERM_MS
+    int "Default combo term (ms)"
+    default 50
+    range 10 200
+
+config ESPKM_DEBUG
+    bool "Enable debug ring buffer"
+    default y
+
+config ESPKM_DEBUG_RING_LEN
+    int "Debug ring entries"
+    default 128
+    range 32 1024
+    depends on ESPKM_DEBUG
+
+config ESPKM_STATS_LOG_PERIOD_MS
+    int "Stats log period (ms, 0=off)"
+    default 0
+    range 0 60000
+    help
+        If >0, periodically logs internal counters (queue drops, report overwrites, transport state).
+
+config ESPKM_VERBOSE_LOG
+    bool "Verbose per-event logging (matrix edges, reports, routing, BLE notifies)"
+    default y
+    help
+        When disabled, the per-event ESP_LOGI lines in matrix_direct,
+        core_task, router_task, and the BLE report sender are compiled out.
+        Leave on while bringing up new hardware; turn off for normal use.
+
+endmenu

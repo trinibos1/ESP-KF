@@ -1,0 +1,6 @@
+source "components/espkm_core/Kconfig"
+source "components/espkm_drivers/Kconfig"
+source "components/espkm_router/Kconfig"
+source "components/espkm_usb/Kconfig"
+source "components/espkm_ble/Kconfig"
+

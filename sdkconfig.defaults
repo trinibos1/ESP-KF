@@ -1,0 +1,57 @@
+# =============================================================================
+# espkm sdkconfig.defaults
+# Target: ESP32-S3 (ProS3D, 16MB flash, internal USB PHY)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# FreeRTOS
+# -----------------------------------------------------------------------------
+CONFIG_FREERTOS_HZ=1000
+
+# -----------------------------------------------------------------------------
+# Flash
+# ProS3D ships with 16MB flash; match image header to avoid boot warnings.
+# If you move to a 2MB/4MB module later, change this in `idf.py menuconfig`.
+# -----------------------------------------------------------------------------
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+
+# -----------------------------------------------------------------------------
+# Console — UART0 (TX=GPIO43, RX=GPIO44 on standard S3 boards)
+# USB Serial/JTAG is DISABLED so TinyUSB can own the USB PHY.
+# On ESP32-S3 USB Serial/JTAG and USB OTG share the same physical pins
+# (GPIO19/GPIO20) and the same internal PHY — they cannot coexist.
+# Connect a USB-serial adapter to UART0 to use the espkm> console.
+# -----------------------------------------------------------------------------
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+CONFIG_ESP_CONSOLE_UART_NUM=0
+# CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG is not set
+# CONFIG_ESP_CONSOLE_USB_CDC is not set
+
+# -----------------------------------------------------------------------------
+# USB OTG — TinyUSB HID keyboard
+# TinyUSB owns the USB PHY exclusively (see console note above).
+# -----------------------------------------------------------------------------
+CONFIG_ESPKM_USB_OTG_ENABLE=y
+CONFIG_TINYUSB_HID_COUNT=1
+# CONFIG_TINYUSB_CDC_ENABLED is not set
+CONFIG_TINYUSB_TASK_ENABLE=n
+CONFIG_ESPKM_USB_POLL_MS=1
+
+# -----------------------------------------------------------------------------
+# BLE (NimBLE)
+# -----------------------------------------------------------------------------
+CONFIG_BT_ENABLED=y
+CONFIG_BT_NIMBLE_ENABLED=y
+CONFIG_BT_NIMBLE_50_FEATURE_SUPPORT=n
+CONFIG_BT_NIMBLE_NVS_PERSIST=y
+CONFIG_BT_NIMBLE_ATT_PREFERRED_MTU=512
+CONFIG_BT_NIMBLE_MSYS_1_BLOCK_COUNT=32
+CONFIG_BT_NIMBLE_MSYS_1_BLOCK_SIZE=512
+CONFIG_BT_NIMBLE_MAX_CONNECTIONS=3
+
+# -----------------------------------------------------------------------------
+# Stats
+# 0 = disabled (use `stats` console command on demand instead)
+# -----------------------------------------------------------------------------
+CONFIG_ESPKM_STATS_LOG_PERIOD_MS=0
