@@ -42,12 +42,6 @@ static void usb_task(void *arg) {
   bool prev_hid_ready = false;
 
   for (;;) {
-#ifndef CONFIG_TINYUSB_TASK_ENABLE
-    // No IDF task — we must pump TinyUSB ourselves at ~1ms for enumeration
-    tud_task();
-    vTaskDelay(pdMS_TO_TICKS(1));
-#endif
-
     vTaskDelayUntil(&last_wake, pdMS_TO_TICKS(CONFIG_ESPKM_USB_POLL_MS));
 
     loop_count++;
@@ -102,7 +96,7 @@ static void usb_task(void *arg) {
 
     ESP_LOGI(TAG, "usb_task: sending report mods=0x%02x keys=%02x %02x %02x %02x %02x %02x",
              r.modifiers, r.keys[0], r.keys[1], r.keys[2], r.keys[3], r.keys[4], r.keys[5]);
-    bool ok = tud_hid_keyboard_report(0, r.modifiers, r.keys);
+    bool ok = tud_hid_keyboard_report(HID_ITF_PROTOCOL_KEYBOARD, r.modifiers, r.keys);
     if (!ok) {
       ESP_LOGW(TAG, "HID drop (EP full or not ready)");
       // Re-queue the report so it isn't lost
