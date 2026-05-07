@@ -55,3 +55,6 @@ CONFIG_BT_NIMBLE_MAX_CONNECTIONS=3
 # 0 = disabled (use `stats` console command on demand instead)
 # -----------------------------------------------------------------------------
 CONFIG_ESPKM_STATS_LOG_PERIOD_MS=0
+
+CONFIG_ESP_CONSOLE_SECONDARY_NONE=y
+# CONFIG_USJ_ENABLE_USB_SERIAL_JTAG is not set
