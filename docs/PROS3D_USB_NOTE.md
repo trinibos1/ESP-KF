@@ -13,6 +13,9 @@ USB HID is fully functional. Both USB and BLE HID work simultaneously in dual-tr
 - ✅ Working—enumerates and sends keystrokes
 - 🔄 Tested on ProS3D (ESP32-S3 with internal USB PHY)
 
+## BLE HID Status
+-✅ Working—enumerates and sends keystrokes
+-🔄 Tested on ProS3D 
 ## Notes
 - USB Serial/JTAG is **disabled** in firmware so TinyUSB can own the PHY.
 - CLI runs on UART0 (GPIO43/44); use a USB-serial adapter.
