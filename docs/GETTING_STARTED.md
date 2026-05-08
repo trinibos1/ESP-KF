@@ -12,9 +12,9 @@ From `C:\Users\ramou\Documents\New project 3`:
 - If Windows only exposes the port in ROM mode, hold **BOOT**, tap **RESET** or plug USB in, then flash.
 
 ## Monitor + CLI
-- Open logs with `idf.py -p COM7 monitor`.
-- The Option 1 CLI runs on **USB Serial/JTAG** at the `espkm>` prompt.
-- Useful commands: `stats`, `transport` (0=NONE, 1=USB, 2=BLE, 3=BOTH), `ring 16`, `ble status`, `ble off`, `ble on`.
+- Connect a USB-serial adapter to **UART0** (GPIO43=TX, GPIO44=RX) for serial monitor: `idf.py -p COM7 monitor`.
+- The Option 1 CLI runs on **UART0** at the `espkm>` prompt.
+- Useful commands: `stats`, `transport` (0=NONE, 1=USB, 2=BLE, 3=BOTH), `ring 8`, `ble status`, `ble off`, `ble on`.
 
 ## First Bring-Up Checklist
 - Boot log should reach `CLI ready on stdio` with no reboot loop.

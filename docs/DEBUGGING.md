@@ -12,13 +12,13 @@ If `ESPKM -> Enable debug ring buffer` is enabled, internal events are stored in
 - `espkm_dbg_dump(...)` copies recent entries for CLI/CDC dumps.
 
 ## Console CLI (Option 1 Default)
-The firmware starts an `esp_console` REPL on **USB Serial/JTAG**. This works on boards where USB-OTG/TinyUSB does not enumerate yet.
+The firmware starts an `esp_console` REPL on **UART0** (GPIO43=TX, GPIO44=RX). This requires a USB-serial adapter connected to those pins since USB Serial/JTAG is disabled to allow TinyUSB to own the USB PHY.
 
 At the `espkm>` prompt:
 
 - `stats` shows queue/drop/overwrite counters.
 - `transport` shows router state (`0=NONE`, `1=USB`, `2=BLE`, `3=BOTH`).
-- `ring [N]` dumps recent debug ring entries.
+- `ring [N]` dumps recent debug ring entries (default 4, max 8).
 - `ble [status|on|off]` checks or gates BLE advertising.
 - `ble clear` clears stored NimBLE bonds/CCCD data.
 
@@ -34,12 +34,13 @@ By default, both USB and BLE HID are active simultaneously when both connections
 
 This allows your keyboard to send keystrokes to both a USB-connected host and a Bluetooth-connected host simultaneously.
 
-## BLE HID Bring-Up Mode
-During early HID testing, BLE bonding is disabled in firmware. This avoids stale host LTK/bond records causing repeated connect/disconnect loops while the HID GATT table is still changing.
+## BLE Pairing & Bonding
+BLE bonding is supported and enabled for persistent device records and encrypted links when the host requires it. The device supports Just-Works pairing (No IO) and will store bonds in NVS.
 
-- Pair/scan for `espkm-hid2`, not the older `espkm` name.
-- If the host keeps auto-connecting to the old device, remove/forget both `espkm` and `espkm-hid2`.
-- Once HID typing is stable, bonding can be re-enabled with persistent NimBLE storage.
+- HID reports are readable/notifiable without encryption; pairing is optional but recommended for secure connections.
+- If a stale host bond causes connect/disconnect loops, the firmware can auto-delete the peer via `BLE_GAP_EVENT_REPEAT_PAIRING` handling.
+- Use `ble clear` to manually clear all stored bonds.
+- Pair/scan for `espkm-hid2`. If you previously paired with an `espkm` device, remove/forget it from the host to avoid duplicates.
 
 ## Stats
 `ESPKM -> Stats log period` prints counters periodically:

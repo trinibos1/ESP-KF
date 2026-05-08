@@ -35,9 +35,8 @@ Both USB HID and BLE HID are **enabled by default**.
 - 🔧 Under testing
 
 ### 🔀 Dual Mode
-- 🔄 USB + BLE simultaneous mode implemented
-- ⏳ Waiting for USB HID to become functional
-- ⚙️ Currently under testing and tuning
+- ✅ USB + BLE simultaneous mode implemented and functional
+- 🔄 Under testing and tuning
    
 ## Current state
 - Architecture + queues + tasks implemented
@@ -45,3 +44,9 @@ Both USB HID and BLE HID are **enabled by default**.
 - Dual-transport (USB + BLE) mode: both active simultaneously when available- Reference keyboard component: `keyboards/demo_macropad`
 - Tap/Hold: implemented for `KC_MT()` / `KC_LT()` (P1 default; P2 permissive options wired)
 - Combos: implemented for 2-key combos with the “undecided priority” rule (currently best suited for tap/hold-style combo members)
+
+## Coming soon 
+- live mapping and remapping
+- Push and hold logic
+- More board support
+- 

@@ -175,8 +175,8 @@ void espkm_cli_start(void) {
   esp_console_repl_config_t repl_config = ESP_CONSOLE_REPL_CONFIG_DEFAULT();
   repl_config.prompt = "espkm> ";
 
-  // Use the active stdio driver. In Option 1, configure ESP-IDF console to USB Serial/JTAG
-  // via menuconfig (or sdkconfig defaults), and this REPL will appear on that port.
+   // Use the active stdio driver (UART0 by default, since USB Serial/JTAG is disabled
+   // to allow TinyUSB HID to own the USB PHY). This REPL appears on that port.
   esp_err_t err = esp_console_new_repl_stdio(&repl_config, &repl);
   if (err != ESP_OK) {
     ESP_LOGW(TAG, "CLI disabled: esp_console_new_repl_stdio failed: %s", esp_err_to_name(err));
