@@ -49,4 +49,4 @@ Both USB HID and BLE HID are **enabled by default**.
 - live mapping and remapping
 - Push and hold logic
 - More board support
-- 
+- more Languages
