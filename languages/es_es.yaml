@@ -1,0 +1,8 @@
+name: Spanish (ES)
+host_layout: es-qwerty
+description: Host-side Spanish layout pairing for symbol portability guidance.
+aliases:
+  n_tilde: KC_BASIC(KC_SCOLON)
+  question_open: KC_BASIC(KC_EQUAL)
+  exclam_open: KC_BASIC(KC_RBRACKET)
+

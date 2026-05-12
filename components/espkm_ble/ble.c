@@ -481,9 +481,9 @@ void espkm_ble_start(void) {
   ble_svc_bas_init();
   ble_svc_dis_init();
 
-  ble_svc_gap_device_name_set("espkm-hid2");
-  ble_svc_dis_manufacturer_name_set("Espressif");
-  ble_svc_dis_model_number_set("espkm-v2");
+  ble_svc_gap_device_name_set(CONFIG_ESPKM_BLE_DEVICE_NAME);
+  ble_svc_dis_manufacturer_name_set(CONFIG_ESPKM_BLE_MANUFACTURER);
+  ble_svc_dis_model_number_set(CONFIG_ESPKM_BLE_MODEL);
 
   int rc = ble_gatts_count_cfg(s_hid_svcs);
   if (rc != 0) {

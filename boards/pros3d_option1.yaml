@@ -1,0 +1,31 @@
+name: ProS3D Option1
+revision: v1
+target: esp32s3
+matrix:
+  rows: 2
+  cols: 3
+  pins:
+    rows: [1, 2]
+    cols: [3, 4, 5]
+hardware:
+  flash_size_mb: 16
+  psram: false
+  partition_table: singleapp
+transport:
+  usb: true
+  ble: true
+usb:
+  manufacturer: "EFK"
+  product: "ProS3D Keyboard"
+  serial: "PROS3D-001"
+ble:
+  device_name: "pros3d-espkm"
+  manufacturer: "EFK"
+  model: "pros3d-option1"
+keymap:
+  layers:
+    - id: 0
+      rows:
+        - [KC_Q, KC_W, KC_E]
+        - [KC_A, KC_S, KC_D]
+notes: Example ProS3D profile for direct matrix bring-up.

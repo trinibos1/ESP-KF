@@ -1,0 +1,8 @@
+name: Turkish (TR)
+host_layout: tr-q
+description: Host-side Turkish Q layout pairing for symbol portability.
+aliases:
+  g_breve: KC_BASIC(KC_LBRACKET)
+  i_dotless: KC_BASIC(KC_I)
+  s_cedilla: KC_BASIC(KC_SEMICOLON)
+

@@ -1,0 +1,8 @@
+name: English (US)
+host_layout: us-qwerty
+description: Default US ANSI host layout pairing.
+aliases:
+  quote: KC_BASIC(KC_QUOTE)
+  slash: KC_BASIC(KC_SLASH)
+  semicolon: KC_BASIC(KC_SCOLON)
+

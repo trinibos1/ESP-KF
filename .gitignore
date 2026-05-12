@@ -5,4 +5,9 @@ dependencies.lock
 managed_components/
 .vscode/
 nul
-
+config/generated/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+espkm.ps1
