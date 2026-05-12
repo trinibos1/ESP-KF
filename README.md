@@ -32,14 +32,40 @@ Supported board profiles:
 - `pros3d_option1`
 - `xiao_esp32s3`
 
-CLI commands:
-- `python tools/espkm.py` (interactive menu)
-- `python tools/espkm.py interactive` (interactive menu)
-- `python tools/espkm.py board list|show|use`
-- `python tools/espkm.py lang list|show|use`
-- `python tools/espkm.py config validate|print|set|generate`
-- `python tools/espkm.py flash`
-- `python tools/espkm.py monitor`
+## CLI Commands
+
+```sh
+python tools/espkm.py                      # interactive menu
+python tools/espkm.py interactive          # interactive menu
+```
+
+### Board
+```sh
+python tools/espkm.py board list           # list available boards
+python tools/espkm.py board show           # show current board
+python tools/espkm.py board use            # select active board
+```
+
+### Language
+```sh
+python tools/espkm.py lang list            # list available languages
+python tools/espkm.py lang show            # show current language
+python tools/espkm.py lang use             # select active language
+```
+
+### Config
+```sh
+python tools/espkm.py config validate      # validate config
+python tools/espkm.py config print         # print current config
+python tools/espkm.py config set           # set config values
+python tools/espkm.py config generate      # generate config
+```
+
+### Firmware
+```sh
+python tools/espkm.py flash                # flash firmware
+python tools/espkm.py monitor              # serial monitor
+```
 
 ## Docs
 
