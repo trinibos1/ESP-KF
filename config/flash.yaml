@@ -1,0 +1,14 @@
+project: espkm
+board: xiao_esp32s3
+language: en_us
+build:
+  target: esp32s3
+serial:
+  port: com7
+  baud: 460800
+matrix_overrides: {}
+features:
+  verbose_log: true
+  cli_enable: true
+keymap_hints:
+  host_layout: us-qwerty

@@ -1,52 +1,59 @@
-# EFK- Esp32 Keyboard firmware
+# ESPKM ESP32 Keyboard Firmware
 
-**Note:** This project originally started as ESPKM (ESP32 Keyboard something). The source code still retains the `espkm_*` prefixes, but the public name has been changed to **ESP‑KF** (ESP32 Keyboard Firmware) to better reflect its purpose.
+This repository is an ESP-IDF firmware framework for ESP32 keyboards, currently focused on ESP32-S3 boards.
 
-This repository is a **work-in-progress** ESP-IDF firmware framework targeting **ESP32-S3**(more support coming soon) keyboards, inspired by QMK:
-
-- Strict event pipeline (matrix → events → features → report → queued transports)
+Key architecture points:
+- Strict event pipeline (matrix -> events -> features -> report -> queued transports)
 - Encoded keycodes (`uint16_t`)
-- Dual-transport support: USB HID (TinyUSB) and BLE HID work simultaneously by default
+- Dual transport support: USB HID (TinyUSB) and BLE HID can run simultaneously
 
-## Quick start
+## Quick Start
 
 1. Install ESP-IDF (v6.x recommended).
-2. Configure (optional):
-   - `idf.py menuconfig` for custom matrix pins or advanced settings
-3. Build/flash:
-   - `idf.py build flash monitor`
+2. Validate config: `python tools/espkm.py config validate`
+3. Generate config bridge and keymap: `python tools/espkm.py config generate`
+4. Flash firmware: `python tools/espkm.py flash`
+5. Open monitor: `python tools/espkm.py monitor`
 
-Both USB HID and BLE HID are **enabled by default**. 
+Windows wrapper:
+- `.\espkm.ps1 <command>`
+
+## Profile-Driven Configuration (v1)
+
+The project uses YAML profiles to separate board and language concerns from firmware internals:
+
+- `config/flash.yaml` -> active config (board, language, target, serial, and feature toggles)
+- `boards/*.yaml` -> reusable board profiles (matrix shape + pins + target)
+- board profile can carry hardware defaults (flash size, PSRAM, partition preset)
+- `languages/*.yaml` -> host-layout-aware language presets
+
+Supported board profiles:
+- `demo_macropad`
+- `pros3d_option1`
+- `xiao_esp32s3`
+
+CLI commands:
+- `python tools/espkm.py` (interactive menu)
+- `python tools/espkm.py interactive` (interactive menu)
+- `python tools/espkm.py board list|show|use`
+- `python tools/espkm.py lang list|show|use`
+- `python tools/espkm.py config validate|print|set|generate`
+- `python tools/espkm.py flash`
+- `python tools/espkm.py monitor`
 
 ## Docs
 
 - `docs/GETTING_STARTED.md`
 - `docs/ARCHITECTURE.md`
 - `docs/DEBUGGING.md`
+- `docs/BOARD_PROFILES.md`
 
-## 📊 HID Status
+## Current State
 
-### 🔵 BLE HID
-- ✅ Working
-- 🔄 Stable under testing
-
-### 🔌 USB HID
-- ✅ Working
-- 🔧 Under testing
-
-### 🔀 Dual Mode
-- ✅ USB + BLE simultaneous mode implemented and functional
-- 🔄 Under testing and tuning
-   
-## Current state
-- Architecture + queues + tasks implemented
-- USB HID keyboard sender implemented (using ESP-IDF TinyUSB/`esp_tinyusb`)- BLE HID keyboard sender implemented (using NimBLE)
-- Dual-transport (USB + BLE) mode: both active simultaneously when available- Reference keyboard component: `keyboards/demo_macropad`
-- Tap/Hold: implemented for `KC_MT()` / `KC_LT()` (P1 default; P2 permissive options wired)
-- Combos: implemented for 2-key combos with the “undecided priority” rule (currently best suited for tap/hold-style combo members)
-
-## Coming soon 
-- live mapping and remapping
-- Push and hold logic
-- More board support
-- more Languages
+- Core architecture and queueing tasks implemented
+- USB HID sender implemented via ESP-IDF TinyUSB
+- BLE HID sender implemented via NimBLE
+- Dual transport mode active when both links are available
+- Reference keyboard component: `keyboards/demo_macropad`
+- Tap/Hold for `KC_MT()` and `KC_LT()` implemented
+- 2-key combos implemented

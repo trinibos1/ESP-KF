@@ -1,0 +1,8 @@
+name: Korean (KR)
+host_layout: ko-kr
+description: Host-side Korean layout pairing for bilingual KR/EN workflows.
+aliases:
+  hangul_toggle: KC_BASIC(KC_HANGEUL)
+  hanja: KC_BASIC(KC_HANJA)
+  won_sign: KC_BASIC(KC_BSLASH)
+

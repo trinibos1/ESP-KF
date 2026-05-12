@@ -14,4 +14,19 @@ config ESPKM_BLE_TASK_PRIO
     default 7
     depends on ESPKM_BLE_ENABLE
 
+config ESPKM_BLE_DEVICE_NAME
+    string "BLE device name"
+    default "espkm-hid2"
+    depends on ESPKM_BLE_ENABLE
+
+config ESPKM_BLE_MANUFACTURER
+    string "BLE DIS manufacturer name"
+    default "Espressif"
+    depends on ESPKM_BLE_ENABLE
+
+config ESPKM_BLE_MODEL
+    string "BLE DIS model number"
+    default "espkm-v2"
+    depends on ESPKM_BLE_ENABLE
+
 endmenu

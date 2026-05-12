@@ -1,0 +1,35 @@
+name: XIAO ESP32-S3
+revision: v1
+target: esp32s3
+matrix:
+  rows: 2
+  cols: 3
+  pins:
+    rows: [1, 2]
+    cols: [3, 4, 5]
+hardware:
+  flash_size_mb: 8
+  psram: false
+  partition_table: default_8MB
+transport:
+  usb: true
+  ble: true
+usb:
+  vid: 12346
+  pid: 4097
+  manufacturer: "EFK"
+  product: "XIAO ESP32-S3 Keyboard"
+  serial: "XIAO-ESP32S3-001"
+ble:
+  device_name: "xiao-espkm"
+  manufacturer: "EFK"
+  model: "xiao-s3-kb"
+keymap:
+  layers:
+    - id: 0
+      rows:
+        - [KC_Q, KC_W, KC_E]
+        - [KC_A, KC_S, KC_D]
+sdkconfig_overrides:
+  CONFIG_BT_NIMBLE_MAX_CONNECTIONS: 3
+notes: Example XIAO ESP32-S3 board profile with board-level flash and psram defaults.

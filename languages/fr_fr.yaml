@@ -1,0 +1,8 @@
+name: French (FR)
+host_layout: fr-azerty
+description: Host-side French AZERTY pairing for symbol portability guidance.
+aliases:
+  a_grave: KC_BASIC(KC_0)
+  e_acute: KC_BASIC(KC_2)
+  c_cedilla: KC_BASIC(KC_9)
+
