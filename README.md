@@ -32,6 +32,16 @@ Supported board profiles:
 - `pros3d_option1`
 - `xiao_esp32s3`
 
+## Board Support
+
+Current board support includes:
+- `demo_macropad` (reference bring-up profile)
+- `pros3d_option1` (ProS3D option 1 profile)
+- `xiao_esp32s3` (Seeed Studio XIAO ESP32-S3 profile)
+
+For board profile requirements, validation rules, migration notes, and hardware/transport details, see:
+- `docs/BOARD_PROFILES.md`
+
 ## CLI Commands
 
 ```sh
