@@ -93,3 +93,10 @@ python tools/espkm.py monitor              # serial monitor
 - Reference keyboard component: `keyboards/demo_macropad`
 - Tap/Hold for `KC_MT()` and `KC_LT()` implemented
 - 2-key combos implemented
+## AI Usage Disclaimer
+
+This project was developed with substantial assistance from AI tools. AI was used for code generation, documentation, architecture discussions, debugging assistance, refactoring suggestions, and general development support.
+
+While generated content has been reviewed and tested where possible, AI-generated code and documentation may contain bugs, inaccuracies, security issues, or non-optimal implementations. Users should independently review, validate, and test all code before using it in production environments.
+
+Contributions are welcome. If you find a bug, documentation issue, inefficient implementation, or have a better solution, please open an issue or submit a pull request.
